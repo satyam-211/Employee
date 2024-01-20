@@ -118,24 +118,32 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
           color: CommonColors.whiteColor,
         ),
       ),
-      bottomNavigationBar: const ColoredBox(
-        color: CommonColors.borderColor,
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: 16,
-            right: 16,
-            bottom: 30,
-            top: 16,
-          ),
-          child: Text(
-            'Swipe left to delete',
-            style: TextStyle(
-              color: Color(0xFF949C9E),
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
+      bottomNavigationBar: BlocBuilder<EmployeeListCubit, EmployeeListState>(
+        builder: (context, state) {
+          return (state is EmployeeListLoaded &&
+                  (state.currentEmployees.isNotEmpty ||
+                      state.previousEmployees.isNotEmpty))
+              ? const ColoredBox(
+                  color: CommonColors.borderColor,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      bottom: 30,
+                      top: 16,
+                    ),
+                    child: Text(
+                      'Swipe left to delete',
+                      style: TextStyle(
+                        color: Color(0xFF949C9E),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                )
+              : const SizedBox.shrink();
+        },
       ),
     );
   }
