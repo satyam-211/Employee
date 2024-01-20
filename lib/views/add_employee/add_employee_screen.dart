@@ -135,80 +135,84 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
           ),
           child: Form(
             key: _formKey,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 24,
-                ),
-                CommonTextField(
-                  prefixWidget: const Icon(
-                    Icons.person,
-                    color: CommonColors.blueColor,
+            child: IntrinsicHeight(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(
+                    height: 24,
                   ),
-                  hintText: 'Employee Name',
-                  controller: nameController,
-                  errorText: 'Please enter name',
-                ),
-                const SizedBox(
-                  height: 23,
-                ),
-                CommonTextField(
-                  prefixWidget: const Icon(
-                    Icons.work,
-                    color: CommonColors.blueColor,
+                  CommonTextField(
+                    prefixWidget: const Icon(
+                      Icons.person,
+                      color: CommonColors.blueColor,
+                    ),
+                    hintText: 'Employee Name',
+                    controller: nameController,
+                    errorText: 'Please enter name',
                   ),
-                  onTap: _openRoleSheet,
-                  hintText: 'Select Role',
-                  controller: roleController,
-                  suffixWidget: const Icon(
-                    Icons.arrow_drop_down_sharp,
-                    color: CommonColors.blueColor,
+                  const SizedBox(
+                    height: 23,
                   ),
-                  errorText: 'Please enter role',
-                ),
-                const SizedBox(
-                  height: 23,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                        child: CommonTextField(
-                      onTap: () => _joinDatePicker(),
-                      prefixWidget: const Icon(
-                        Icons.calendar_month,
-                        color: CommonColors.blueColor,
-                      ),
-                      controller: startDayController,
-                      errorText: 'Please enter start date',
-                      hintText: 'No date',
-                    )),
-                    const SizedBox(
-                      width: 16,
+                  CommonTextField(
+                    prefixWidget: const Icon(
+                      Icons.work,
+                      color: CommonColors.blueColor,
                     ),
-                    const Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Icon(
-                        Icons.arrow_right_alt,
-                        color: CommonColors.blueColor,
-                      ),
+                    onTap: _openRoleSheet,
+                    hintText: 'Select Role',
+                    controller: roleController,
+                    suffixWidget: const Icon(
+                      Icons.arrow_drop_down_sharp,
+                      color: CommonColors.blueColor,
                     ),
-                    const SizedBox(
-                      width: 16,
+                    errorText: 'Please enter role',
+                  ),
+                  const SizedBox(
+                    height: 23,
+                  ),
+                  Flexible(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                            child: CommonTextField(
+                          onTap: () => _joinDatePicker(),
+                          prefixWidget: const Icon(
+                            Icons.calendar_month,
+                            color: CommonColors.blueColor,
+                          ),
+                          controller: startDayController,
+                          errorText: 'Please enter start date',
+                          hintText: 'No date',
+                        )),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        const Align(
+                          child: Icon(
+                            Icons.arrow_right_alt,
+                            color: CommonColors.blueColor,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Expanded(
+                            child: CommonTextField(
+                          onTap: _leaveDatePicker,
+                          prefixWidget: const Icon(
+                            Icons.calendar_month,
+                            color: CommonColors.blueColor,
+                          ),
+                          controller: endDayController,
+                          hintText: 'No date',
+                        )),
+                      ],
                     ),
-                    Expanded(
-                        child: CommonTextField(
-                      onTap: _leaveDatePicker,
-                      prefixWidget: const Icon(
-                        Icons.calendar_month,
-                        color: CommonColors.blueColor,
-                      ),
-                      controller: endDayController,
-                      hintText: 'No date',
-                    )),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
